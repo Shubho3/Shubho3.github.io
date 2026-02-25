@@ -1,12 +1,627 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Shubham Patidar | Application Developer</title>
+    <meta name="description"
+        content="Portfolio of Shubham Patidar - Application Developer focused on reliable mobile experiences and robust payment integrations." />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <!-- Page Overlay -->
+    <div id="page-overlay"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">SHUBHAM.P</a>
+            <div class="nav-links">
+                <a href="#about" class="nav-link" onclick="smoothNav(event,this)">About</a>
+                <a href="#services" class="nav-link" onclick="smoothNav(event,this)">Services</a>
+                <a href="#portfolio" class="nav-link" onclick="smoothNav(event,this)">Portfolio</a>
+                <a href="#testimonials" class="nav-link" onclick="smoothNav(event,this)">Experience</a>
+            </div>
+            <a href="#contact" class="nav-btn outline-white desktop" onclick="smoothNav(event,this)">Get in Touch</a>
+            <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="#about" onclick="closeMenu(event,this)">About</a>
+        <a href="#services" onclick="closeMenu(event,this)">Services</a>
+        <a href="#portfolio" onclick="closeMenu(event,this)">Portfolio</a>
+        <a href="#testimonials" onclick="closeMenu(event,this)">Experience</a>
+        <a href="#contact" class="nav-btn primary"
+            style="margin-top:1rem;font-family:'GeistMono',monospace;padding:.75rem 2rem"
+            onclick="closeMenu(event,this)">Get in Touch</a>
+    </div>
+
+    <!-- Hero -->
+    <section id="hero" onmousemove="heroMove(event)">
+        <div class="hero-bg" id="hero-bg" style="opacity:0">
+            <img src="images/hero-bg.jpg" alt="Hero Background" onload="heroImgLoaded()" id="hero-bg-img" />
+        </div>
+        <div class="hero-sharp" id="hero-sharp"
+            style="opacity:0;transform:translate3d(calc(42vw - 225px),calc(28vh - 225px),0)">
+            <div class="hero-sharp-inner" id="hero-sharp-inner"
+                style="transform:translate3d(calc(-1*(calc(42vw - 225px))),calc(-1*(calc(28vh - 225px))),0)">
+                <img src="images/hero-bg.jpg" alt="Hero Sharp" />
+            </div>
+        </div>
+        <div class="hero-frame" id="hero-frame"
+            style="opacity:0;transform:translate3d(calc(42vw - 225px),calc(28vh - 225px),0)">
+            <div class="hero-crosshair-h"></div>
+            <div class="hero-crosshair-v"></div>
+        </div>
+        <div class="hero-role left" id="role-left"><span>Application Developer</span></div>
+        <div class="hero-role right" id="role-right"><span>Android Specialist</span></div>
+        <div class="hero-content">
+            <div class="hero-name" id="hero-name">
+                <h1>SHUBHAM PATIDAR</h1>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div>
+                    <div class="anim-el"><span class="section-label">About Me</span></div>
+                    <div class="anim-el" style="transition-delay:.1s">
+                        <p class="about-desc">I'm an Application Developer focused on reliable mobile experiences and
+                            robust payment integrations. I build and ship production-ready Android and Flutter apps,
+                            optimize data flows with SQL-backed storage, and bring practical ML skills to prototype
+                            intelligent features. I design mobile-first solutions that are maintainable and performant,
+                            breaking complex features into small, testable components.</p>
+                    </div>
+                    <div class="anim-el" style="transition-delay:.2s">
+                        <div class="about-exp">
+                            <span class="about-exp-num">3+</span>
+                            <span class="about-exp-label">Years of<br />Experience</span>
+                        </div>
+                    </div>
+                    <div class="anim-el" style="transition-delay:.3s">
+                        <div class="about-stats">
+                            <div><span class="about-stat-value">10+</span><span class="about-stat-label">Projects
+                                    Completed</span></div>
+                            <div><span class="about-stat-value">5+</span><span class="about-stat-label">Payment
+                                    Integrations</span></div>
+                            <div><span class="about-stat-value">3</span><span class="about-stat-label">Production
+                                    Apps</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-images">
+                    <div class="about-img-wrap anim-el" style="transition-delay:.1s">
+                        <div class="aspect"><img src="images/about-1.jpg" alt="Android development" /></div>
+                    </div>
+                    <div class="about-img-wrap anim-el" style="transition-delay:.2s">
+                        <div class="aspect"><img src="images/about-2.jpg" alt="Code architecture" /></div>
+                    </div>
+                    <div class="about-img-wrap anim-el" style="transition-delay:.3s">
+                        <div class="aspect"><img src="images/about-3.jpg" alt="Team collaboration" /></div>
+                    </div>
+                    <div class="about-img-wrap anim-el" style="transition-delay:.4s">
+                        <div class="aspect"><img src="images/about-4.jpg" alt="Development workspace" /></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services">
+        <div class="container">
+            <div class="services-header">
+                <div class="anim-el"><span class="section-label">Services</span></div>
+                <div class="anim-el" style="transition-delay:.1s">
+                    <h2>What I Do</h2>
+                </div>
+            </div>
+            <div class="anim-el" style="transition-delay:.2s">
+                <div class="service-item">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="5" y="2" width="14" height="20" rx="2" />
+                            <line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2.5" />
+                        </svg>
+                    </div>
+                    <div class="service-body">
+                        <h3>Android Development</h3>
+                        <p>Building production-ready Android apps with Kotlin and Java. Focus on modular architecture,
+                            clear API contracts, and performance-first engineering with testable code.</p>
+                    </div>
+                    <div class="service-num">01</div>
+                    <div class="service-hover-img"><img src="images/service-1.jpg" alt="Android Development" /></div>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24">
+                            <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                            <polyline points="2 17 12 22 22 17" />
+                            <polyline points="2 12 12 17 22 12" />
+                        </svg>
+                    </div>
+                    <div class="service-body">
+                        <h3>Flutter Development</h3>
+                        <p>Cross-platform mobile development using Flutter and Dart. Creating responsive UIs,
+                            implementing state management, and integrating native features through platform channels.
+                        </p>
+                    </div>
+                    <div class="service-num">02</div>
+                    <div class="service-hover-img"><img src="images/service-2.jpg" alt="Flutter Development" /></div>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="1" y="4" width="22" height="16" rx="2" />
+                            <line x1="1" y1="10" x2="23" y2="10" />
+                        </svg>
+                    </div>
+                    <div class="service-body">
+                        <h3>Payment Integration</h3>
+                        <p>Expert in payment gateway integrations including Stripe Terminal. Building secure, reliable
+                            payment flows with proper error handling and transaction management.</p>
+                    </div>
+                    <div class="service-num">03</div>
+                    <div class="service-hover-img"><img src="images/service-3.jpg" alt="Payment Integration" /></div>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24">
+                            <ellipse cx="12" cy="5" rx="9" ry="3" />
+                            <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
+                            <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
+                        </svg>
+                    </div>
+                    <div class="service-body">
+                        <h3>Local Data Persistence</h3>
+                        <p>Implementing SQL-backed storage solutions using Room DB. Optimizing data flows, designing
+                            efficient schemas, and ensuring data integrity across app lifecycle.</p>
+                    </div>
+                    <div class="service-num">04</div>
+                    <div class="service-hover-img"><img src="images/service-4.jpg" alt="Local Data Persistence" /></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section id="portfolio">
+        <div class="container">
+            <div class="portfolio-header">
+                <div class="anim-el"><span class="section-label">Portfolio</span></div>
+                <div class="anim-el" style="transition-delay:.1s">
+                    <h2>Selected Projects</h2>
+                </div>
+                <div class="anim-el" style="transition-delay:.2s">
+                    <p>A collection of projects showcasing my expertise in mobile development, payment integrations, and
+                        building production-ready applications that scale.</p>
+                </div>
+            </div>
+            <div class="portfolio-grid" id="portfolio-grid">
+                <!-- Featured -->
+                <div class="project-card featured anim-el" style="transition-delay:0s">
+                    <div class="project-img-wrap">
+                        <div class="aspect169"><img src="images/portfolio-1.jpg" alt="treminalauto" />
+                            <div class="project-overlay"></div>
+                            <div class="project-year">2024</div>
+                            <div class="project-arrow"><svg viewBox="0 0 24 24">
+                                    <line x1="7" y1="17" x2="17" y2="7" />
+                                    <polyline points="7 7 17 7 17 17" />
+                                </svg></div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>treminalauto</h3>
+                        <p>Payment Integration</p>
+                    </div>
+                </div>
+                <div class="project-card anim-el" style="transition-delay:.1s">
+                    <div class="project-img-wrap">
+                        <div class="aspect43"><img src="images/portfolio-2.jpg" alt="Shubho3CrudApp" />
+                            <div class="project-overlay"></div>
+                            <div class="project-year">2024</div>
+                            <div class="project-arrow"><svg viewBox="0 0 24 24">
+                                    <line x1="7" y1="17" x2="17" y2="7" />
+                                    <polyline points="7 7 17 7 17 17" />
+                                </svg></div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Shubho3CrudApp</h3>
+                        <p>Android / Room DB</p>
+                    </div>
+                </div>
+                <div class="project-card anim-el" style="transition-delay:.2s">
+                    <div class="project-img-wrap">
+                        <div class="aspect43"><img src="images/portfolio-3.jpg" alt="flutter_location" />
+                            <div class="project-overlay"></div>
+                            <div class="project-year">2023</div>
+                            <div class="project-arrow"><svg viewBox="0 0 24 24">
+                                    <line x1="7" y1="17" x2="17" y2="7" />
+                                    <polyline points="7 7 17 7 17 17" />
+                                </svg></div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>flutter_location</h3>
+                        <p>Flutter / i18n</p>
+                    </div>
+                </div>
+                <div class="project-card anim-el" style="transition-delay:.3s">
+                    <div class="project-img-wrap">
+                        <div class="aspect43"><img src="images/portfolio-4.jpg" alt="ML Prototype Features" />
+                            <div class="project-overlay"></div>
+                            <div class="project-year">2023</div>
+                            <div class="project-arrow"><svg viewBox="0 0 24 24">
+                                    <line x1="7" y1="17" x2="17" y2="7" />
+                                    <polyline points="7 7 17 7 17 17" />
+                                </svg></div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>ML Prototype Features</h3>
+                        <p>Machine Learning</p>
+                    </div>
+                </div>
+                <!-- CTA Card -->
+                <div class="portfolio-cta-card anim-el" style="transition-delay:.4s">
+                    <div>
+                        <span class="cta-label">Have a project in mind?</span>
+                        <h3>Let's Build Something Great Together</h3>
+                    </div>
+                    <a href="#contact" onclick="smoothNav(event,this)">Start a Project <svg viewBox="0 0 24 24">
+                            <line x1="7" y1="17" x2="17" y2="7" />
+                            <polyline points="7 7 17 7 17 17" />
+                        </svg></a>
+                    <div class="deco-circle1"></div>
+                    <div class="deco-circle2"></div>
+                </div>
+                <!-- Full width -->
+                <div class="project-card full-span anim-el" style="transition-delay:.5s">
+                    <div class="project-img-wrap">
+                        <div class="aspect169"><img src="images/portfolio-5.jpg" alt="CI/CD Pipeline Setup" />
+                            <div class="project-overlay"></div>
+                            <div class="project-year">2023</div>
+                            <div class="project-arrow"><svg viewBox="0 0 24 24">
+                                    <line x1="7" y1="17" x2="17" y2="7" />
+                                    <polyline points="7 7 17 7 17 17" />
+                                </svg></div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>CI/CD Pipeline Setup</h3>
+                        <p>DevOps</p>
+                    </div>
+                </div>
+            </div>
+            <div class="view-all anim-el">
+                <button>View All Projects <svg viewBox="0 0 24 24">
+                        <line x1="7" y1="17" x2="17" y2="7" />
+                        <polyline points="7 7 17 7 17 17" />
+                    </svg></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="testimonials">
+        <div class="container">
+            <div class="exp-header">
+                <div class="anim-el"><span class="section-label">Experience</span></div>
+                <div class="anim-el" style="transition-delay:.1s">
+                    <h2>Professional Journey</h2>
+                </div>
+            </div>
+            <div class="anim-el" style="transition-delay:.2s">
+                <div class="exp-grid">
+                    <div class="exp-img-panel">
+                        <div class="exp-slide-img active" id="slide-img-0"><img src="images/testimonial-1.jpg"
+                                alt="Mirnah Technology Systems" /></div>
+                        <div class="exp-slide-img below" id="slide-img-1"><img src="images/testimonial-2.jpg"
+                                alt="Shubham Patidar" /></div>
+                        <div class="exp-slide-img below" id="slide-img-2"><img src="images/testimonial-3.jpg"
+                                alt="Open Source" /></div>
+                        <div class="exp-quote-icon"><svg viewBox="0 0 24 24">
+                                <path
+                                    d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z" />
+                                <path
+                                    d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z" />
+                            </svg></div>
+                    </div>
+                    <div>
+                        <div class="exp-stars">
+                            <svg viewBox="0 0 24 24">
+                                <polygon
+                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                            </svg>
+                            <svg viewBox="0 0 24 24">
+                                <polygon
+                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                            </svg>
+                            <svg viewBox="0 0 24 24">
+                                <polygon
+                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                            </svg>
+                            <svg viewBox="0 0 24 24">
+                                <polygon
+                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                            </svg>
+                            <svg viewBox="0 0 24 24">
+                                <polygon
+                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                            </svg>
+                        </div>
+                        <div class="exp-quotes">
+                            <p class="exp-quote-text active" id="quote-0">"Working on mobile app development, payment
+                                integrations, and creating stable, maintainable codebases that scale. Specialized in
+                                Stripe Terminal integration and Flutter-Android interop."</p>
+                            <p class="exp-quote-text hidden-q" id="quote-1">"Ship clean, testable code — iterate fast.
+                                My approach: modular architecture, clear API contracts, performance-first engineering,
+                                and breaking complex features into small, testable components."</p>
+                            <p class="exp-quote-text hidden-q" id="quote-2">"Built multiple production-ready apps with
+                                focus on payment integrations, local persistence with Room DB, and cross-platform
+                                development using Flutter. Always learning, always shipping."</p>
+                        </div>
+                        <div class="exp-author">
+                            <div class="exp-author-item active" id="author-0">
+                                <p>Mirnah Technology Systems</p>
+                                <p>Application Developer, Current Role</p>
+                            </div>
+                            <div class="exp-author-item hidden-q" id="author-1">
+                                <p>Shubham Patidar</p>
+                                <p>Developer Philosophy, Personal</p>
+                            </div>
+                            <div class="exp-author-item hidden-q" id="author-2">
+                                <p>Open Source</p>
+                                <p>Contributor, GitHub</p>
+                            </div>
+                        </div>
+                        <div class="exp-nav">
+                            <div class="exp-dots">
+                                <button class="exp-dot active" id="dot-0" onclick="goToSlide(0)"></button>
+                                <button class="exp-dot" id="dot-1" onclick="goToSlide(1)"></button>
+                                <button class="exp-dot" id="dot-2" onclick="goToSlide(2)"></button>
+                            </div>
+                            <div class="exp-arrows">
+                                <button class="exp-arrow-btn" onclick="prevSlide()" aria-label="Previous">
+                                    <svg viewBox="0 0 24 24">
+                                        <polyline points="15 18 9 12 15 6" />
+                                    </svg>
+                                </button>
+                                <button class="exp-arrow-btn" onclick="nextSlide()" aria-label="Next">
+                                    <svg viewBox="0 0 24 24">
+                                        <polyline points="9 18 15 12 9 6" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="contact">
+        <div class="cta-bg">
+            <img src="images/cta-bg.jpg" alt="Background" />
+            <div class="cta-bg-overlay"></div>
+        </div>
+        <div class="container">
+            <div class="cta-content">
+                <div class="anim-el">
+                    <div class="cta-tags">
+                        <span class="cta-tag">Android Developer</span>
+                        <span class="cta-tag">Flutter Expert</span>
+                        <span class="cta-tag">Payment Integration</span>
+                    </div>
+                </div>
+                <div class="anim-el" style="transition-delay:.1s">
+                    <h2>Ready to Build Your Next Mobile App?</h2>
+                </div>
+                <div class="anim-el" style="transition-delay:.2s">
+                    <p>I'm always excited to work on new mobile projects, especially those involving payment
+                        integrations, cross-platform development, or challenging technical problems.</p>
+                </div>
+                <div class="anim-el" style="transition-delay:.3s">
+                    <div class="cta-buttons">
+                        <a href="mailto:sbhimavat21@gmail.com" class="cta-main-btn">Let's Talk &#8594;</a>
+                        <a href="mailto:sbhimavat21@gmail.com" class="cta-email-link">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                <polyline points="22,6 12,13 2,6" />
+                            </svg>
+                            sbhimavat21@gmail.com
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand anim-el">
+                    <h3>SHUBHAM.P</h3>
+                    <p>Application Developer focused on reliable mobile experiences and robust payment integrations.</p>
+                    <div class="footer-social">
+                        <a href="https://www.linkedin.com/in/shubham-patidar-663821217" target="_blank"
+                            aria-label="LinkedIn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                                <rect x="2" y="9" width="4" height="12" />
+                                <circle cx="4" cy="4" r="2" />
+                            </svg>
+                        </a>
+                        <a href="https://github.com/Shubho3" target="_blank" aria-label="GitHub">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                            </svg>
+                        </a>
+                        <a href="mailto:sbhimavat21@gmail.com" aria-label="Email">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                <polyline points="22,6 12,13 2,6" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-col anim-el" style="transition-delay:.1s">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="#about" onclick="smoothNav(event,this)">About</a></li>
+                        <li><a href="#services" onclick="smoothNav(event,this)">Services</a></li>
+                        <li><a href="#portfolio" onclick="smoothNav(event,this)">Portfolio</a></li>
+                        <li><a href="#testimonials" onclick="smoothNav(event,this)">Experience</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col anim-el" style="transition-delay:.2s">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services" onclick="smoothNav(event,this)">Android Development</a></li>
+                        <li><a href="#services" onclick="smoothNav(event,this)">Flutter Development</a></li>
+                        <li><a href="#services" onclick="smoothNav(event,this)">Payment Integration</a></li>
+                        <li><a href="#services" onclick="smoothNav(event,this)">Local Data Persistence</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col anim-el" style="transition-delay:.3s">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="https://www.linkedin.com/in/shubham-patidar-663821217" target="_blank">LinkedIn</a>
+                        </li>
+                        <li><a href="https://github.com/Shubho3" target="_blank">GitHub</a></li>
+                        <li><a href="mailto:sbhimavat21@gmail.com">Email</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col footer-newsletter anim-el" style="transition-delay:.4s">
+                    <h4>Stay Updated</h4>
+                    <p>Subscribe to receive updates on new projects and mobile development insights.</p>
+                    <form onsubmit="return false">
+                        <input type="email" placeholder="Enter your email" />
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom anim-el">
+                <p>© 2024 Shubham Patidar. All rights reserved.</p>
+                <p>Built with passion for clean, testable code</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ── Page overlay ──
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('page-overlay').classList.add('hidden');
+            }, 300);
+        });
+
+        // ── Hero mouse parallax ──
+        const halfBox = 225;
+        let heroImgReady = false, heroLoaded = false;
+        function heroImgLoaded() {
+            heroImgReady = true;
+            tryShowHero();
+        }
+        setTimeout(() => { heroLoaded = true; tryShowHero(); }, 300);
+        function tryShowHero() {
+            if (!heroLoaded || !heroImgReady) return;
+            document.getElementById('hero-bg').style.opacity = '1';
+            document.getElementById('hero-sharp').style.opacity = '1';
+            document.getElementById('hero-frame').style.opacity = '1';
+            document.getElementById('hero-name').classList.add('visible');
+            document.getElementById('role-left').classList.add('visible');
+            document.getElementById('role-right').classList.add('visible');
+        }
+        function heroMove(e) {
+            const rect = e.currentTarget.getBoundingClientRect();
+            const x = e.clientX - rect.left - halfBox;
+            const y = e.clientY - rect.top - halfBox;
+            const t = `translate3d(${x}px,${y}px,0)`;
+            document.getElementById('hero-sharp').style.transform = t;
+            document.getElementById('hero-frame').style.transform = t;
+            document.getElementById('hero-sharp-inner').style.transform = `translate3d(${-x}px,${-y}px,0)`;
+        }
+
+        // ── Navbar ──
+        const navbar = document.getElementById('navbar');
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobile-menu');
+        setTimeout(() => navbar.classList.add('visible'), 1800);
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        }, { passive: true });
+        function toggleMenu() {
+            hamburger.classList.toggle('open');
+            mobileMenu.classList.toggle('open');
+        }
+        function closeMenu(e, el) {
+            e.preventDefault();
+            hamburger.classList.remove('open');
+            mobileMenu.classList.remove('open');
+            const target = document.querySelector(el.getAttribute('href'));
+            if (target) target.scrollIntoView({ behavior: 'smooth' });
+        }
+        function smoothNav(e, el) {
+            const href = el.getAttribute('href');
+            if (href && href.startsWith('#')) {
+                e.preventDefault();
+                const t = document.querySelector(href);
+                if (t) t.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // ── Scroll animations ──
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.anim-el').forEach(el => observer.observe(el));
+
+        // ── Experience slider ──
+        let activeSlide = 0;
+        const totalSlides = 3;
+        let sliderInterval = setInterval(nextSlide, 6000);
+        function goToSlide(n) {
+            const prev = activeSlide;
+            activeSlide = n;
+            ['img', 'quote', 'author', 'dot'].forEach(type => {
+                const prevEl = document.getElementById(`${type === 'dot' ? 'dot' : type === 'img' ? 'slide-img' : type === 'quote' ? 'quote' : 'author'}-${prev}`);
+                const nextEl = document.getElementById(`${type === 'dot' ? 'dot' : type === 'img' ? 'slide-img' : type === 'quote' ? 'quote' : 'author'}-${n}`);
+                if (type === 'dot') {
+                    prevEl && prevEl.classList.remove('active');
+                    nextEl && nextEl.classList.add('active');
+                } else if (type === 'img') {
+                    prevEl && (prevEl.className = 'exp-slide-img above');
+                    nextEl && (nextEl.className = 'exp-slide-img active');
+                } else {
+                    prevEl && prevEl.classList.replace('active', 'hidden-q');
+                    nextEl && nextEl.classList.replace('hidden-q', 'active');
+                }
+            });
+            clearInterval(sliderInterval);
+            sliderInterval = setInterval(nextSlide, 6000);
+        }
+        function nextSlide() { goToSlide((activeSlide + 1) % totalSlides); }
+        function prevSlide() { goToSlide((activeSlide - 1 + totalSlides) % totalSlides); }
+    </script>
+</body>
+
 </html>
